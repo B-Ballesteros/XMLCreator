@@ -21,11 +21,11 @@ Public Class XmlManager
     ''' <param name="persons">Lsit of persons that will be stored in the xml file</param>
     Public Shared Sub WriteXMLUsing(ByVal persons As List(Of Person))
         If File.Exists(FilePath) Then
+            UpdateXMLAt(FilePath, persons)
         Else
             CreateXmlFrom(FilePath, persons)
         End If
     End Sub
-
 
     ''' <summary>
     ''' This function is in charge to create the xml file if such file doesn't existts
@@ -84,5 +84,37 @@ Public Class XmlManager
             Return Nothing
         End Try
     End Function
+
+    ''' <summary>
+    ''' Open the contents of the xml and append a new element for each person in the list
+    ''' </summary>
+    ''' <param name="filePath">Complete path of the xml file</param>
+    ''' <param name="persons">List of elements that will be added </param>
+    Private Shared Sub UpdateXMLAt(ByVal filePath As String, ByVal persons As List(Of Person))
+        Try
+            'Open the doument
+            Dim xmlDoument = New XmlDocument
+            xmlDoument.Load(filePath)
+            Dim parentNode = xmlDoument.SelectSingleNode("Persons")
+            'Append new element for each member of the list
+            For Each person As Person In persons
+                Dim personElement = xmlDoument.CreateElement("Person")
+                Dim idElement = xmlDoument.CreateElement("ID")
+                Dim nameElement = xmlDoument.CreateElement("Name")
+                Dim eMailElement = xmlDoument.CreateElement("eMail")
+                idElement.InnerText = person.ID
+                nameElement.InnerText = person.Name
+                eMailElement.InnerText = person.eMail
+
+                personElement.AppendChild(idElement)
+                personElement.AppendChild(nameElement)
+                personElement.AppendChild(eMailElement)
+                parentNode.AppendChild(personElement)
+            Next
+            xmlDoument.Save(filePath) 'save the document in the same location (overwrite)
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
 End Class

@@ -17,4 +17,18 @@
     Private Sub readBtn_Click(sender As Object, e As EventArgs) Handles readBtn.Click
         XmlManager.LoadXML()
     End Sub
+
+    Private Sub appendBtn_Click(sender As Object, e As EventArgs) Handles appendBtn.Click
+        Dim personCount = XmlManager.LoadXML().Count
+        Dim person = New Person
+        With person
+            .ID = personCount.ToString + "ASDF"
+            .Name = "Nombre" + personCount.ToString
+            .eMail = .Name + "@email.com"
+        End With
+        Dim persons = New List(Of Person)
+        persons.Add(person)
+        XmlManager.WriteXMLUsing(persons)
+
+    End Sub
 End Class

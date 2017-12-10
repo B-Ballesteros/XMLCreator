@@ -22,9 +22,29 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
+        Me.generateBtn = New System.Windows.Forms.Button()
+        Me.SuspendLayout()
+        '
+        'generateBtn
+        '
+        Me.generateBtn.Location = New System.Drawing.Point(68, 88)
+        Me.generateBtn.Name = "generateBtn"
+        Me.generateBtn.Size = New System.Drawing.Size(75, 23)
+        Me.generateBtn.TabIndex = 0
+        Me.generateBtn.Text = "Generate"
+        Me.generateBtn.UseVisualStyleBackColor = True
+        '
+        'Form1
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.generateBtn)
+        Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.ResumeLayout(False)
+
     End Sub
 
+    Friend WithEvents generateBtn As Button
 End Class

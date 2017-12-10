@@ -15,11 +15,12 @@
     End Sub
 
     Private Sub readBtn_Click(sender As Object, e As EventArgs) Handles readBtn.Click
-        XmlManager.LoadXML()
+        'XmlManager.LoadXML()
+        setComboBox()
     End Sub
 
     Private Sub appendBtn_Click(sender As Object, e As EventArgs) Handles appendBtn.Click
-        Dim personCount = XmlManager.LoadXML().Count
+        Dim personCount = XmlManager.LoadXML.Count
         Dim person = New Person
         With person
             .ID = personCount.ToString + "ASDF"
@@ -30,5 +31,12 @@
         persons.Add(person)
         XmlManager.WriteXMLUsing(persons)
 
+    End Sub
+
+    Private Sub setComboBox()
+        Dim persons = XmlManager.LoadXML
+        ComboBox1.DataSource = New BindingSource(persons, Nothing)
+        ComboBox1.DisplayMember = "Name"
+        ComboBox1.ValueMember = "ID"
     End Sub
 End Class

@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.generateBtn = New System.Windows.Forms.Button()
+        Me.readBtn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'generateBtn
@@ -34,11 +35,21 @@ Partial Class Form1
         Me.generateBtn.Text = "Generate"
         Me.generateBtn.UseVisualStyleBackColor = True
         '
+        'readBtn
+        '
+        Me.readBtn.Location = New System.Drawing.Point(68, 138)
+        Me.readBtn.Name = "readBtn"
+        Me.readBtn.Size = New System.Drawing.Size(75, 23)
+        Me.readBtn.TabIndex = 1
+        Me.readBtn.Text = "Read"
+        Me.readBtn.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.readBtn)
         Me.Controls.Add(Me.generateBtn)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -47,4 +58,5 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents generateBtn As Button
+    Friend WithEvents readBtn As Button
 End Class

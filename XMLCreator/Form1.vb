@@ -11,6 +11,10 @@
 
             persons.Add(person)
         Next
-        XmlManager.writeXMLUsing(persons)
+        XmlManager.WriteXMLUsing(persons)
+    End Sub
+
+    Private Sub readBtn_Click(sender As Object, e As EventArgs) Handles readBtn.Click
+        XmlManager.LoadXML()
     End Sub
 End Class
